@@ -20,4 +20,5 @@ ALTER TABLE sbd.agency
     MODIFY password VARCHAR(255) NOT NULL,
     MODIFY phone_number VARCHAR(15) NOT NULL,
     MODIFY gender ENUM ('MALE', 'FEMALE') NOT NULL,
-    MODIFY age INT NOT NULL;
+    MODIFY age INT NOT NULL,
+    ADD CONSTRAINT chk_agency_age CHECK ( age > 0 );
