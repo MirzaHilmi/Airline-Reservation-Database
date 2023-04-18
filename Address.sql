@@ -1,6 +1,6 @@
 CREATE TABLE sbd.address
 (
-    id           VARCHAR(36),
+    id           VARCHAR(36) PRIMARY KEY,
     street       VARCHAR(255),
     house_number INT,
     rt           INT,
