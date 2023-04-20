@@ -40,4 +40,8 @@ The project is developed using the following technologies:
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the terms of the MIT License.
+
+**What does this mean?**
+
+The MIT License is a permissive open source license that allows you to use, copy, modify, merge, publish, distribute, and/or sell copies of the software, as long as you include the original copyright and license notice in any copies or substantial portions of the software.
