@@ -12,4 +12,4 @@ ALTER TABLE sbd.address
     MODIFY postal_code VARCHAR(5) NOT NULL;
 
 ALTER TABLE sbd.address
-ALTER id SET DEFAULT (UUID());
+    ALTER id SET DEFAULT (UUID());
