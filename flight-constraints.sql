@@ -9,3 +9,6 @@ ALTER TABLE sbd.flight
     MODIFY departure DATETIME NOT NULL,
     MODIFY arrival DATETIME NOT NULL,
     MODIFY capacity INT NOT NULL;
+
+ALTER TABLE sbd.flight
+    ALTER id SET DEFAULT (UUID());
