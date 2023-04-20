@@ -26,7 +26,7 @@ The schema is designed to ensure data integrity, prevent data redundancy, and al
 
 #### Relational Diagram
 
-<img src="https://raw.githubusercontent.com/MirzaHilmi/SBD-Final-Project/master/docs/relational.png" alt="image that relational diagram of the database">
+<img src="https://raw.githubusercontent.com/MirzaHilmi/SBD-Final-Project/master/docs/relational2.png" alt="image that relational diagram of the database">
 
 ## Technologies Used
 
