@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/MirzaHilmi/SBD-Final-Project/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -39,5 +40,7 @@ func GetDB() (*gorm.DB, error) {
 }
 
 func Migrate(db *gorm.DB) error {
-	return db.AutoMigrate()
+	return db.AutoMigrate(
+		&models.Address{},
+	)
 }
