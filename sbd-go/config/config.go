@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/MirzaHilmi/SBD-Final-Project/models"
+	"github.com/MirzaHilmi/SBD-Final-Project/sbd-go/models"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
