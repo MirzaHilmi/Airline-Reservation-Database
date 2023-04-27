@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/MirzaHilmi/SBD-Final-Project/sbd-go/config"
+	"github.com/MirzaHilmi/SBD-GO/config"
 
 	"github.com/joho/godotenv"
 )
