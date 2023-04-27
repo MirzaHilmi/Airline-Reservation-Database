@@ -1,0 +1,3 @@
+[submodule "SBD-GO"]
+	path = SBD-GO
+	url = https://github.com/MirzaHilmi/SBD-GO
