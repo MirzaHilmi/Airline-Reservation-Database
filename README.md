@@ -1,9 +1,9 @@
 <img src="https://raw.githubusercontent.com/MirzaHilmi/SBD-Final-Project/master/docs/banner-image.png" alt="banner that says Sistem Basis Data">
 
-# SBD Final Project
+# Airline Reservation Database
 `Final Project for the Database System Course`
 
-This repository contains the final project for the Database System course. The project is developed as part of the course requirements and aims to showcase the knowledge and skills gained during the course.
+This repository contains the final project for the [Database System Course](https://github.com/MirzaHilmi/Database-System-Course). The project is developed as part of the course requirements and aims to showcase the knowledge and skills gained during the course.
 
 ## Project Description
 
