@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS sbd.address;
+
 CREATE TABLE sbd.address
 (
     id           VARCHAR(36),

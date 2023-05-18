@@ -5,11 +5,8 @@ ALTER TABLE sbd.address
     MODIFY house_number INT NOT NULL,
     MODIFY rt INT NOT NULL,
     MODIFY rw INT NOT NULL,
-    MODIFY village VARCHAR(255) NOT NULL,
+    MODIFY village VARCHAR(255),
     MODIFY district VARCHAR(255) NOT NULL,
     MODIFY city VARCHAR(255) NOT NULL,
     MODIFY province VARCHAR(255) NOT NULL,
     MODIFY postal_code VARCHAR(5) NOT NULL;
-
-ALTER TABLE sbd.address
-    ALTER id SET DEFAULT (UUID());

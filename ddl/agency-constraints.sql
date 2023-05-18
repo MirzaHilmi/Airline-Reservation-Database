@@ -1,7 +1,7 @@
 ALTER TABLE sbd.agency
     ADD CONSTRAINT pk_agency_id PRIMARY KEY (id),
     ALTER id SET DEFAULT (UUID()),
-    ADD CONSTRAINT fk_agency_address_id FOREIGN KEY (address_id) REFERENCES sbd.address (id),
+    ADD CONSTRAINT fk_agency_address_id FOREIGN KEY (address_id) REFERENCES sbd.address (id) ON DELETE CASCADE ON UPDATE CASCADE,
     MODIFY first_name VARCHAR(255) NOT NULL,
     MODIFY last_name VARCHAR(255) NOT NULL,
     ADD CONSTRAINT uq_agency_email UNIQUE (email),
