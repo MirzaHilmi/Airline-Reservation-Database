@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS sbd.customer;
+
 CREATE TABLE sbd.customer
 (
     id           VARCHAR(36),
