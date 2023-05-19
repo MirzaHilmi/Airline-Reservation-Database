@@ -8,3 +8,5 @@ ALTER TABLE sbd.address
     MODIFY city VARCHAR(255) NOT NULL,
     MODIFY province VARCHAR(255) NOT NULL,
     ADD CONSTRAINT pk_address_address_id PRIMARY KEY (address_id);
+
+DESCRIBE sbd.address;
