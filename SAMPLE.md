@@ -1,5 +1,11 @@
 # Data Sample
----
+
+## Table of Contents
+
+- [Address Table](#address)
+- [Customer Table](#customer)
+- [Agency Table](#agency)
+- [Admin Table](#admin)
 
 ## Address
 
