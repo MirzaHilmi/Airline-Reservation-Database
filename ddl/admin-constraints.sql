@@ -9,6 +9,7 @@ ALTER TABLE sbd.admin
     ADD CONSTRAINT pk_admin_admin_id PRIMARY KEY (admin_id),
     ADD CONSTRAINT pk_admin_agency_id FOREIGN KEY (agency_id) REFERENCES sbd.agency (agency_id) ON UPDATE CASCADE ON DELETE CASCADE,
     ADD CONSTRAINT fk_admin_address_id FOREIGN KEY (address_id) REFERENCES sbd.address (address_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    ADD CONSTRAINT uq_admin_address_id UNIQUE (address_id),
     ADD CONSTRAINT uq_admin_email UNIQUE (email),
     ADD CONSTRAINT uq_admin_phone_number UNIQUE (phone_number);
 
