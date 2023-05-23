@@ -38,7 +38,7 @@ The project is developed using the following technologies:
 
 - [Mirza Hilmi](https://github.com/MirzaHilmi)
 - [Archie Vian](https://github.com/archieVian8)
-- [Ahmad Faiz Agustianto] (https://github.com/Mifaki)
+- [Ahmad Faiz Agustianto](https://github.com/Mifaki)
 
 ## License
 
