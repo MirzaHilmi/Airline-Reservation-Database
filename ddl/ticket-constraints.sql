@@ -1,9 +1,9 @@
 ALTER TABLE sbd.ticket
-    ALTER id SET DEFAULT (UUID()),
-    ADD CONSTRAINT pk_ticket_id PRIMARY KEY (id),
-    ADD CONSTRAINT fk_ticket_flight_id FOREIGN KEY (flight_id) REFERENCES sbd.flight (id),
-    ADD CONSTRAINT fk_ticket_seat_id FOREIGN KEY (seat_id) REFERENCES sbd.seat (id),
-    MODIFY price DECIMAL(10, 2) NOT NULL;
+    MODIFY ticket_id INT AUTO_INCREMENT,
+    MODIFY price DECIMAL(10, 2) NOT NULL,
+    ADD CONSTRAINT pk_ticket_ticket_id PRIMARY KEY (ticket_id),
+    ADD CONSTRAINT fk_ticket_flight_id FOREIGN KEY (flight_id) REFERENCES sbd.flight (flight_id),
+    ADD CONSTRAINT fk_ticket_seat_id FOREIGN KEY (seat_id) REFERENCES sbd.seat (seat_id),
+    ADD CONSTRAINT uq_ticket_seat_id UNIQUE (seat_id);
 
-ALTER TABLE sbd.ticket
-    ALTER id SET DEFAULT (UUID());
+DESCRIBE sbd.ticket;

@@ -1,8 +1,7 @@
 ALTER TABLE sbd.seat
-    ALTER id SET DEFAULT (UUID()),
-    ADD CONSTRAINT pk_seat_id PRIMARY KEY (id),
-    ADD CONSTRAINT fk_seat_class_id FOREIGN KEY (class_id) REFERENCES sbd.class (id),
-    ALTER available SET DEFAULT FALSE;
+    MODIFY seat_id INT AUTO_INCREMENT,
+    ALTER available SET DEFAULT FALSE,
+    ADD CONSTRAINT pk_seat_seat_id PRIMARY KEY (seat_id),
+    ADD CONSTRAINT fk_seat_class_id FOREIGN KEY (class_id) REFERENCES sbd.class (class_id);
 
-ALTER TABLE sbd.seat
-    ALTER id SET DEFAULT (UUID());
+DESCRIBE sbd.seat;

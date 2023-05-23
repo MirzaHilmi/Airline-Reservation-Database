@@ -1,7 +1,9 @@
+DROP TABLE IF EXISTS sbd.ticket;
+
 CREATE TABLE sbd.ticket
 (
-    id        VARCHAR(36),
-    flight_id VARCHAR(36),
-    seat_id   VARCHAR(36),
+    ticket_id INT,
+    flight_id INT,
+    seat_id   INT,
     price     DECIMAL(10, 2)
 );

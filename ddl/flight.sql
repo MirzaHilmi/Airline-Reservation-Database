@@ -1,8 +1,10 @@
+DROP TABLE IF EXISTS sbd.flight;
+
 CREATE TABLE sbd.flight
 (
-    id          VARCHAR(36),
-    airline_id  VARCHAR(36),
-    agency_id   VARCHAR(36),
+    flight_id   INT,
+    airline_id  INT,
+    admin_id    INT,
     name        VARCHAR(255),
     destination VARCHAR(255),
     distance    INT,

@@ -1,6 +1,8 @@
-CREATE TABLE seat
+DROP TABLE IF EXISTS sbd.seat;
+
+CREATE TABLE sbd.seat
 (
-    id        VARCHAR(36),
-    class_id  VARCHAR(36),
+    seat_id   INT,
+    class_id  INT,
     available BOOLEAN
 );

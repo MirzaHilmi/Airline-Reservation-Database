@@ -1,5 +1,7 @@
+DROP TABLE IF EXISTS sbd.airline;
+
 CREATE TABLE sbd.airline
 (
-    id   VARCHAR(36),
+    airline_id   INT,
     name VARCHAR(255)
 );

@@ -1,6 +1,8 @@
+DROP TABLE IF EXISTS sbd.payment;
+
 CREATE TABLE sbd.payment
 (
-    id     VARCHAR(36),
-    method ENUM ('CASH', 'BANK'),
-    amount DECIMAL(10, 2)
+    payment_id INT,
+    method     ENUM ('CASH', 'BANK'),
+    amount     DECIMAL(10, 2)
 );

@@ -1,7 +1,9 @@
+DROP TABLE IF EXISTS sbd.class;
+
 CREATE TABLE sbd.class
 (
-    id        VARCHAR(36),
-    flight_id VARCHAR(36),
+    class_id  INT,
+    flight_id INT,
     type      ENUM ('FIRST', 'BUSINESS', 'ECONOMY'),
     price     DECIMAL(10, 2)
 );

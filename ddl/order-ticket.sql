@@ -1,11 +1,13 @@
+DROP TABLE IF EXISTS sbd.order_ticket;
+
 CREATE TABLE sbd.order_ticket
 (
-    id                VARCHAR(36),
-    agency_id         VARCHAR(36),
-    customer_id       VARCHAR(36),
-    ticket_id         VARCHAR(36),
-    payment_id        VARCHAR(36),
-    price_amount      DECIMAL(10, 2),
+    order_ticket_id   INT,
+    agency_id         INT,
+    customer_id       INT,
+    ticket_id         INT,
+    payment_id        INT,
     date_order_placed DATETIME,
-    date_order_paid   DATETIME
+    date_order_paid   DATETIME,
+    price_amount      DECIMAL(10, 2)
 );

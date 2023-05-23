@@ -1,7 +1,6 @@
 ALTER TABLE sbd.airline
-    ALTER id SET DEFAULT (UUID()),
-    ADD CONSTRAINT pk_airline_id PRIMARY KEY (id),
-    MODIFY name VARCHAR(255) NOT NULL;
+    MODIFY airline_id INT AUTO_INCREMENT,
+    MODIFY name VARCHAR(255) NOT NULL,
+    ADD CONSTRAINT pk_airline_airline_id PRIMARY KEY (airline_id);
 
-ALTER TABLE sbd.airline
-    ALTER id SET DEFAULT (UUID());
+DESCRIBE sbd.airline;
