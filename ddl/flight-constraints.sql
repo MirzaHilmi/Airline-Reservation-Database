@@ -7,7 +7,7 @@ ALTER TABLE sbd.flight
     MODIFY arrival DATETIME NOT NULL,
     MODIFY capacity INT NOT NULL,
     ADD CONSTRAINT pk_flight_flight_id PRIMARY KEY (flight_id),
-    ADD CONSTRAINT fk_flight_airline_id FOREIGN KEY (airline_id) REFERENCES sbd.airline (airline_id),
-    ADD CONSTRAINT fk_flight_admin_id FOREIGN KEY (admin_id) REFERENCES sbd.admin (admin_id);
+    ADD CONSTRAINT fk_flight_airline_id FOREIGN KEY (airline_id) REFERENCES sbd.airline (airline_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    ADD CONSTRAINT fk_flight_admin_id FOREIGN KEY (admin_id) REFERENCES sbd.admin (admin_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 DESCRIBE sbd.flight;
