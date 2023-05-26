@@ -4,6 +4,5 @@ CREATE TABLE sbd.class
 (
     class_id  INT,
     flight_id INT,
-    type      ENUM ('FIRST', 'BUSINESS', 'ECONOMY'),
-    price     DECIMAL(10, 2)
+    name      ENUM ('FIRST', 'BUSINESS', 'ECONOMY')
 );

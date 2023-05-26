@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS sbd.address CASCADE;
+DROP TABLE IF EXISTS sbd.address;
 
 CREATE TABLE sbd.address
 (

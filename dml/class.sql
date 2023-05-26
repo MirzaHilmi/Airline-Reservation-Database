@@ -1,18 +1,19 @@
-INSERT INTO sbd.class (flight_id, type, price) VALUES
-  (1, 'FIRST', 2500000.00),
-  (1, 'BUSINESS', 1500000.00),
-  (2, 'FIRST', 2000000.00),
-  (2, 'BUSINESS', 1200000.00),
-  (2, 'ECONOMY', 500000.00),
-  (3, 'BUSINESS', 1000000.00),
-  (4, 'FIRST', 1800000.00),
-  (4, 'BUSINESS', 1100000.00),
-  (5, 'FIRST', 2200000.00),
-  (6, 'BUSINESS', 900000.00),
-  (7, 'FIRST', 1900000.00),
-  (8, 'BUSINESS', 1300000.00),
-  (8, 'ECONOMY', 600000.00),
-  (9, 'FIRST', 2100000.00),
-  (10, 'FIRST', 2300000.00);
+INSERT INTO sbd.class (flight_id, name)
+VALUES (1, 'FIRST'),
+       (1, 'BUSINESS'),
+       (2, 'FIRST'),
+       (2, 'BUSINESS'),
+       (2, 'ECONOMY'),
+       (3, 'BUSINESS'),
+       (4, 'FIRST'),
+       (4, 'BUSINESS'),
+       (5, 'FIRST'),
+       (6, 'BUSINESS'),
+       (7, 'FIRST'),
+       (8, 'BUSINESS'),
+       (8, 'ECONOMY'),
+       (9, 'FIRST'),
+       (10, 'FIRST');
 
-SELECT * FROM sbd.class;
+SELECT *
+FROM sbd.class;
