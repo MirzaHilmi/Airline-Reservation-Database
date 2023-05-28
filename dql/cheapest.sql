@@ -1,0 +1,2 @@
+SELECT MIN(price) AS PRICE
+FROM ticket;
