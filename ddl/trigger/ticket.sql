@@ -22,7 +22,7 @@ BEGIN
     END IF;
 
     UPDATE sbd.seat
-    SET available = NEW.order_ticket_id IS NOT NULL
+    SET available = NEW.order_ticket_id IS NULL
     WHERE seat_id = (SELECT ticket.seat_id
                      FROM sbd.ticket
                      WHERE order_ticket_id = @current_order_ticket_id AND ticket_id = NEW.ticket_id);
