@@ -347,45 +347,44 @@
 
 ## Payment
 
-| payment\_id | order\_ticket\_id | payment\_method | amount |
-| :--- | :--- | :--- | :--- |
-| 1 | 1 | BCA | null |
-| 2 | 2 | BSI | null |
-| 3 | 3 | BRI | null |
-| 4 | 4 | MANDIRI | null |
-| 5 | 5 | BNI | null |
-| 6 | 6 | BCA | null |
-| 7 | 7 | BRI | null |
-| 8 | 8 | BSI | null |
-| 9 | 9 | BCA | null |
-| 10 | 10 | BNI | null |
-| 11 | 11 | BNI | null |
-| 12 | 12 | BCA | null |
-| 13 | 13 | MANDIRI | null |
-| 14 | 14 | BRI | null |
-| 15 | 15 | BSI | null |
-| 16 | 16 | BSI | null |
-| 17 | 17 | BCA | null |
-| 18 | 18 | BRI | null |
-| 19 | 19 | BSI | null |
-| 20 | 20 | MANDIRI | null |
-| 21 | 21 | BCA | null |
-| 22 | 22 | BNI | null |
-| 23 | 23 | MANDIRI | null |
-| 24 | 24 | BRI | null |
-| 25 | 25 | BSI | null |
-| 26 | 26 | BSI | null |
-| 27 | 27 | BCA | null |
-| 28 | 28 | MANDIRI | null |
-| 29 | 29 | BRI | null |
-| 30 | 30 | BNI | null |
-| 31 | 31 | BCA | null |
-| 32 | 32 | BRI | null |
-| 33 | 33 | BSI | null |
-| 34 | 34 | BNI | null |
-| 35 | 35 | BCA | null |
-| 36 | 36 | MANDIRI | null |
-| 37 | 37 | BSI | null |
-| 38 | 38 | BRI | null |
-| 39 | 39 | BNI | null |
-
+| payment\_id | order\_ticket\_id | payment\_method |
+| :--- | :--- | :--- |
+| 1 | 1 | BCA |
+| 2 | 2 | BSI |
+| 3 | 3 | BRI |
+| 4 | 4 | MANDIRI |
+| 5 | 5 | BNI |
+| 6 | 6 | BCA |
+| 7 | 7 | BRI |
+| 8 | 8 | BSI |
+| 9 | 9 | BCA |
+| 10 | 10 | BNI |
+| 11 | 11 | BNI |
+| 12 | 12 | BCA |
+| 13 | 13 | MANDIRI |
+| 14 | 14 | BRI |
+| 15 | 15 | BSI |
+| 16 | 16 | BSI |
+| 17 | 17 | BCA |
+| 18 | 18 | BRI |
+| 19 | 19 | BSI |
+| 20 | 20 | MANDIRI |
+| 21 | 21 | BCA |
+| 22 | 22 | BNI |
+| 23 | 23 | MANDIRI |
+| 24 | 24 | BRI |
+| 25 | 25 | BSI |
+| 26 | 26 | BSI |
+| 27 | 27 | BCA |
+| 28 | 28 | MANDIRI |
+| 29 | 29 | BRI |
+| 30 | 30 | BNI |
+| 31 | 31 | BCA |
+| 32 | 32 | BRI |
+| 33 | 33 | BSI |
+| 34 | 34 | BNI |
+| 35 | 35 | BCA |
+| 36 | 36 | MANDIRI |
+| 37 | 37 | BSI |
+| 38 | 38 | BRI |
+| 39 | 39 | BNI |
