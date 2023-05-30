@@ -1,3 +1,7 @@
+DROP SCHEMA IF EXISTS sbd;
+CREATE SCHEMA sbd;
+USE sbd;
+
 DROP TABLE IF EXISTS sbd.payment;
 DROP TABLE IF EXISTS sbd.ticket;
 DROP TABLE IF EXISTS sbd.order_ticket;
@@ -224,9 +228,10 @@ ALTER TABLE sbd.payment
     ADD CONSTRAINT pk_payment_payment_id PRIMARY KEY (payment_id),
     ADD CONSTRAINT fk_payment_order_ticket_id FOREIGN KEY (order_ticket_id) REFERENCES sbd.order_ticket (order_ticket_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-DROP TRIGGER IF EXISTS after_update_ticket;
+DROP TRIGGER IF EXISTS sbd.after_update_ticket;
 
-CREATE TRIGGER after_update_ticket
+DELIMITER $$
+CREATE TRIGGER sbd.after_update_ticket
     AFTER UPDATE
     ON sbd.ticket
     FOR EACH ROW
@@ -255,6 +260,7 @@ BEGIN
                      WHERE order_ticket_id = @current_order_ticket_id AND ticket_id = NEW.ticket_id);
     END IF;
 END;
+DELIMITER ;
 
 DROP VIEW IF EXISTS sbd.airline_flight_class;
 
