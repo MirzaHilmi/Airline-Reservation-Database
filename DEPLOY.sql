@@ -126,6 +126,44 @@ CREATE TABLE sbd.payment
     payment_method  ENUM ('BCA', 'BRI', 'BNI', 'MANDIRI', 'BSI')
 );
 
+DELIMITER $$
+CREATE TRIGGER sbd.after_update_ticket
+    AFTER UPDATE
+    ON sbd.ticket
+    FOR EACH ROW
+
+BEGIN
+    SET @current_order_ticket_id = COALESCE(NEW.order_ticket_id, OLD.order_ticket_id);
+    UPDATE sbd.order_ticket
+    SET price_amount = (SELECT SUM(price)
+                        FROM sbd.ticket
+                        WHERE order_ticket_id = @current_order_ticket_id)
+    WHERE order_ticket_id = @current_order_ticket_id;
+
+    IF NEW.order_ticket_id IS NOT NULL AND NEW.order_ticket_id != OLD.order_ticket_id THEN
+        UPDATE sbd.order_ticket
+        SET price_amount = (SELECT SUM(price)
+                            FROM sbd.ticket
+                            WHERE order_ticket_id = OLD.order_ticket_id)
+        WHERE order_ticket_id = OLD.order_ticket_id;
+    END IF;
+
+    IF NEW.order_ticket_id IS NOT NULL THEN
+    UPDATE sbd.seat
+    SET available = FALSE
+    WHERE seat_id = (SELECT ticket.seat_id
+                     FROM sbd.ticket
+                     WHERE order_ticket_id = @current_order_ticket_id AND ticket_id = NEW.ticket_id);
+    END IF;
+END;
+DELIMITER ;
+
+CREATE VIEW sbd.airline_flight_class AS
+SELECT a.name AS airline_name, b.name AS flight_name, b.destination, b.departure, b.arrival, b.capacity, c.name AS class_type
+FROM sbd.airline a
+         INNER JOIN sbd.flight b ON a.airline_id = b.airline_id
+         INNER JOIN sbd.class c ON b.flight_id = c.flight_id;
+
 #           CONSTRAINT CREATION
 # ==========================================
 ALTER TABLE sbd.address
@@ -229,44 +267,6 @@ ALTER TABLE sbd.payment
     MODIFY payment_method ENUM ('BCA', 'BRI', 'BNI', 'MANDIRI', 'BSI') NOT NULL,
     ADD CONSTRAINT pk_payment_payment_id PRIMARY KEY (payment_id),
     ADD CONSTRAINT fk_payment_order_ticket_id FOREIGN KEY (order_ticket_id) REFERENCES sbd.order_ticket (order_ticket_id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-DELIMITER $$
-CREATE TRIGGER sbd.after_update_ticket
-    AFTER UPDATE
-    ON sbd.ticket
-    FOR EACH ROW
-
-BEGIN
-    SET @current_order_ticket_id = COALESCE(NEW.order_ticket_id, OLD.order_ticket_id);
-    UPDATE sbd.order_ticket
-    SET price_amount = (SELECT SUM(price)
-                        FROM sbd.ticket
-                        WHERE order_ticket_id = @current_order_ticket_id)
-    WHERE order_ticket_id = @current_order_ticket_id;
-
-    IF NEW.order_ticket_id IS NOT NULL AND NEW.order_ticket_id != OLD.order_ticket_id THEN
-        UPDATE sbd.order_ticket
-        SET price_amount = (SELECT SUM(price)
-                            FROM sbd.ticket
-                            WHERE order_ticket_id = OLD.order_ticket_id)
-        WHERE order_ticket_id = OLD.order_ticket_id;
-    END IF;
-
-    IF NEW.order_ticket_id IS NOT NULL THEN
-    UPDATE sbd.seat
-    SET available = FALSE
-    WHERE seat_id = (SELECT ticket.seat_id
-                     FROM sbd.ticket
-                     WHERE order_ticket_id = @current_order_ticket_id AND ticket_id = NEW.ticket_id);
-    END IF;
-END;
-DELIMITER ;
-
-CREATE VIEW sbd.airline_flight_class AS
-SELECT a.name AS airline_name, b.name AS flight_name, b.destination, b.departure, b.arrival, b.capacity, c.name AS class_type
-FROM sbd.airline a
-         INNER JOIN sbd.flight b ON a.airline_id = b.airline_id
-         INNER JOIN sbd.class c ON b.flight_id = c.flight_id;
 
 #           DATA INSERTION
 # ======================================
@@ -433,31 +433,29 @@ VALUES (3, '2023-05-27 10:30:00'),
        (9, '2023-05-30 17:15:00'),
        (10, '2023-05-30 08:45:00');
 
-INSERT INTO sbd.ticket (flight_id, seat_id, order_ticket_id, price)
-VALUES (1, 56, 1, 1500000.00),
-       (2, 83, 2, 2000000.00),
-       (3, 12, 3, 1750000.00),
-       (4, 64, 3, 1900000.00),
-       (5, 7, 3, 1650000.00),
-       (6, 91, 4, 2250000.00),
-       (7, 28, 5, 1800000.00),
-       (8, 33, 5, 1950000.00),
-       (9, 41, 6, 1700000.00),
-       (10, 76, 6, 2100000.00),
-       (1, 92, 6, 2200000.00),
-       (2, 17, 7, 1850000.00),
-       (3, 63, 8, 1600000.00),
-       (4, 34, 8, 2300000.00),
-       (5, 80, 9, 2050000.00),
-       (6, 52, 10, 1400000.00),
-       (7, 25, 10, 1750000.00),
-       (8, 97, 11, 1900000.00),
-       (9, 9, 11, 1550000.00),
-       (10, 45, 12, 2100000.00),
-       (1, 87, 12, 1800000.00);
-
 INSERT INTO sbd.ticket (flight_id, seat_id, price)
-VALUES (2, 73, 1950000.00),
+VALUES (1, 56, 1500000.00),
+       (2, 83, 2000000.00),
+       (3, 12, 1750000.00),
+       (4, 64, 1900000.00),
+       (5, 7, 1650000.00),
+       (6, 91, 2250000.00),
+       (7, 28, 1800000.00),
+       (8, 33, 1950000.00),
+       (9, 41, 1700000.00),
+       (10, 76, 2100000.00),
+       (1, 92, 2200000.00),
+       (2, 17, 1850000.00),
+       (3, 63, 1600000.00),
+       (4, 34, 2300000.00),
+       (5, 80, 2050000.00),
+       (6, 52, 1400000.00),
+       (7, 25, 1750000.00),
+       (8, 97, 1900000.00),
+       (9, 9, 1550000.00),
+       (10, 45, 2100000.00),
+       (1, 87, 1800000.00),
+       (2, 73, 1950000.00),
        (3, 49, 2100000.00),
        (4, 38, 1650000.00),
        (5, 21, 2200000.00),
@@ -527,3 +525,87 @@ VALUES (1, 'BCA'),
        (37, 'BSI'),
        (38, 'BRI'),
        (39, 'BNI');
+
+UPDATE sbd.ticket
+SET order_ticket_id = 1
+WHERE ticket_id = 1;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 2
+WHERE ticket_id = 2;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 3
+WHERE ticket_id = 3;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 3
+WHERE ticket_id = 4;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 3
+WHERE ticket_id = 5;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 4
+WHERE ticket_id = 6;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 5
+WHERE ticket_id = 7;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 5
+WHERE ticket_id = 8;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 6
+WHERE ticket_id = 9;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 6
+WHERE ticket_id = 10;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 6
+WHERE ticket_id = 11;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 7
+WHERE ticket_id = 12;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 8
+WHERE ticket_id = 13;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 8
+WHERE ticket_id = 14;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 9
+WHERE ticket_id = 15;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 10
+WHERE ticket_id = 16;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 10
+WHERE ticket_id = 17;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 11
+WHERE ticket_id = 18;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 11
+WHERE ticket_id = 19;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 12
+WHERE ticket_id = 20;
+
+UPDATE sbd.ticket
+SET order_ticket_id = 12
+WHERE ticket_id = 21;
