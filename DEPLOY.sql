@@ -13,6 +13,8 @@ DROP TABLE IF EXISTS sbd.admin;
 DROP TABLE IF EXISTS sbd.agency;
 DROP TABLE IF EXISTS sbd.customer;
 DROP TABLE IF EXISTS sbd.address;
+DROP TRIGGER IF EXISTS sbd.after_update_ticket;
+DROP VIEW IF EXISTS sbd.airline_flight_class;
 
 #               TABLE CREATION
 # ===========================================
@@ -228,8 +230,6 @@ ALTER TABLE sbd.payment
     ADD CONSTRAINT pk_payment_payment_id PRIMARY KEY (payment_id),
     ADD CONSTRAINT fk_payment_order_ticket_id FOREIGN KEY (order_ticket_id) REFERENCES sbd.order_ticket (order_ticket_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-DROP TRIGGER IF EXISTS sbd.after_update_ticket;
-
 DELIMITER $$
 CREATE TRIGGER sbd.after_update_ticket
     AFTER UPDATE
@@ -261,8 +261,6 @@ BEGIN
     END IF;
 END;
 DELIMITER ;
-
-DROP VIEW IF EXISTS sbd.airline_flight_class;
 
 CREATE VIEW sbd.airline_flight_class AS
 SELECT a.name AS airline_name, b.name AS flight_name, b.destination, b.departure, b.arrival, b.capacity, c.name AS class_type
