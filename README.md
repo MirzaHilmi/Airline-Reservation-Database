@@ -22,7 +22,7 @@ The schema is designed to ensure data integrity, prevent data redundancy, and al
 
 #### Entity Relationship Diagram
 
-<img src="https://raw.githubusercontent.com/MirzaHilmi/SBD-Final-Project/master/docs/erd.png" alt="image that show er diagram of the database">
+<img src="https://raw.githubusercontent.com/MirzaHilmi/SBD-Final-Project/master/docs/erd.jpg" alt="image that show er diagram of the database">
 
 #### Relational Diagram
 
